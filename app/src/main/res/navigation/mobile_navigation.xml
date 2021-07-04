@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="br.edu.unisep.mymemories.ui.home.HomeFragment"
+        android:name="br.edu.unisep.mymemories.ui.map.MapFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="br.edu.unisep.mymemories.ui.dashboard.DashboardFragment"
+        android:name="br.edu.unisep.mymemories.ui.memory.MemoryFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_memory" />
 
 </navigation>

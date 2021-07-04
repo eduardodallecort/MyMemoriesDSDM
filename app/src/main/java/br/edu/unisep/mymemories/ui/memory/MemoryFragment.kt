@@ -1,4 +1,4 @@
-package br.edu.unisep.mymemories.ui.dashboard
+package br.edu.unisep.mymemories.ui.memory
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import br.edu.unisep.mymemories.R
-import br.edu.unisep.mymemories.databinding.FragmentDashboardBinding
+import br.edu.unisep.mymemories.databinding.FragmentMemoryBinding
 
-class DashboardFragment : Fragment() {
+class MemoryFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
+    private lateinit var memoryViewModel: MemoryViewModel
+    private var _binding: FragmentMemoryBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,14 +24,14 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        memoryViewModel =
+            ViewModelProvider(this).get(MemoryViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentMemoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        memoryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
