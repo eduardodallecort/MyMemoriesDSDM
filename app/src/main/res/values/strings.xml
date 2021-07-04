@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">MyMemories</string>
+    <string name="app_name">My Memories</string>
     <string name="title_home">Mapa</string>
     <string name="title_dashboard">Memórias</string>
+
+    <string name="titleNewMemory">Nova Memória</string>
+    <string name="titleSaveNewMemory">Salvar Memória</string>
 </resources>
