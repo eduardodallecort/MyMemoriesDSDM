@@ -5,4 +5,14 @@
 
     <string name="titleNewMemory">Nova Memória</string>
     <string name="titleSaveNewMemory">Salvar Memória</string>
+
+    <string name="btnCam">Câmera</string>
+    <string name="btnGallery">Galeria</string>
+    <string name="btnTakeLocalization">Usar Outra Localização</string>
+
+    <string name="tilCity">Cidade</string>
+    <string name="tilDescription">Descrição:</string>
+
+    <string name="localization">Localização:</string>
+    <string name="addText">Add text</string>
 </resources>

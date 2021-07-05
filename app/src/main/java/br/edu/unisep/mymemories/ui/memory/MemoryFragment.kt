@@ -2,43 +2,24 @@ package br.edu.unisep.mymemories.ui.memory
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import br.edu.unisep.mymemories.databinding.FragmentMemoryBinding
 
 class MemoryFragment : Fragment() {
 
-    private lateinit var memoryViewModel: MemoryViewModel
-    private var _binding: FragmentMemoryBinding? = null
+    private val memoryViewModel: MemoryViewModel by viewModels<MemoryViewModel>()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val binding: FragmentMemoryBinding by lazy {
+        FragmentMemoryBinding.inflate(layoutInflater)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        memoryViewModel =
-            ViewModelProvider(this).get(MemoryViewModel::class.java)
+    ) = binding.root
 
-        _binding = FragmentMemoryBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        memoryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
