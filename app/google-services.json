@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "982947581295",
+    "project_id": "mymemoriesdsdm2021eduardo",
+    "storage_bucket": "mymemoriesdsdm2021eduardo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982947581295:android:dbb4ed884dd4f3960f6c9a",
+        "android_client_info": {
+          "package_name": "br.edu.unisep.mymemories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982947581295-1hqvf7jdvm6jcqmg1sishhd59l77k85m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3vImRigWnYI9JKeLtVgA4zBmdXEam30g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982947581295-1hqvf7jdvm6jcqmg1sishhd59l77k85m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

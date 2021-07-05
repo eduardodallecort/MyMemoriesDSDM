@@ -4,41 +4,69 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import br.edu.unisep.mymemories.databinding.FragmentMapBinding
+import com.google.android.gms.location.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.SupportMapFragment
+import br.edu.unisep.mymemories.R
 
 class MapFragment : Fragment() {
 
     private lateinit var mapViewModel: MapViewModel
-    private var _binding: FragmentMapBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val binding: FragmentMapBinding by lazy {
+        FragmentMapBinding.inflate(layoutInflater)
+    }
+
+    private lateinit var mMap: GoogleMap
+
+    private lateinit var mLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        mapViewModel =
-            ViewModelProvider(this).get(MapViewModel::class.java)
+    ) = binding.root
 
-        _binding = FragmentMapBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val textView: TextView = binding.textHome
-        mapViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        setupMap()
+    }
+
+    private fun setupMap() {
+
+        val supportMapFragment: SupportMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+
+        supportMapFragment.getMapAsync(OnMapReadyCallback {
+            fun onMapReady(googleMap: GoogleMap) {
+
+                googleMap.setOnMapClickListener { GoogleMap.OnMapClickListener {
+
+                    fun onMapClick(latLng: LatLng) {
+                        val markerOptions: MarkerOptions = MarkerOptions()
+
+                        markerOptions.position(latLng)
+
+                        markerOptions.title(latLng.latitude.toString() + latLng.longitude.toString())
+
+                        googleMap.clear()
+
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                            latLng, 10F
+                        ))
+
+                        googleMap.addMarker(markerOptions)
+                    }
+
+                } }
+            }
         })
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
