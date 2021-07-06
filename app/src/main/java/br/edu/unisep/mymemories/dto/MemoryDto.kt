@@ -1,7 +1,7 @@
 package br.edu.unisep.mymemories.dto
 
 data class MemoryDto(
-    var id: Int? = null,
+    var id: String,
     val picture: String,
     val city: String,
     val memoryDate: String,

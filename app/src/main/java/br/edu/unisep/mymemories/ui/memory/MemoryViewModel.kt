@@ -8,14 +8,14 @@ import br.edu.unisep.mymemories.dto.MemoryDto
 import br.edu.unisep.mymemories.repository.MemoryRepository
 import kotlinx.coroutines.launch
 
-class MemoryViewModel(private val memoryRepository: MemoryRepository) : ViewModel() {
+class MemoryViewModel(private val repository: MemoryRepository) : ViewModel() {
 
 
     val memoriesResult: MutableLiveData<List<MemoryDto>> = MutableLiveData()
 
     fun getMemories() {
         viewModelScope.launch {
-            val result = memoryRepository.getList()
+            val result = repository.getList()
             memoriesResult.postValue(result)
         }
     }
