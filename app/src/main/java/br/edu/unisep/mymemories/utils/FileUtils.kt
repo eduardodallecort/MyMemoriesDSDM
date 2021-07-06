@@ -2,6 +2,7 @@ package br.edu.unisep.mymemories.utils
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Base64
 import androidx.core.content.FileProvider
@@ -24,4 +25,10 @@ fun bitmapToBase64(bitmap: Bitmap): String {
     val imageBase64 = Base64.encodeToString(imageArray, Base64.NO_WRAP)
 
     return imageBase64
+}
+
+fun base64toBitMap(base64: String): Bitmap {
+
+    val decodedString = Base64.decode(base64, Base64.NO_WRAP)
+    return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
 }

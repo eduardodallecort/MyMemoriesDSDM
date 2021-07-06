@@ -1,5 +1,6 @@
 package br.edu.unisep.mymemories.ui.memory
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.mymemories.R
 import br.edu.unisep.mymemories.databinding.ItemMemoryBinding
 import br.edu.unisep.mymemories.dto.MemoryDto
+import br.edu.unisep.mymemories.utils.base64toBitMap
 import java.time.format.DateTimeFormatter
 
 class MemoryAdapter : RecyclerView.Adapter<MemoryAdapter.MemoriesViewHolder>(){
@@ -32,8 +34,13 @@ class MemoryAdapter : RecyclerView.Adapter<MemoryAdapter.MemoriesViewHolder>(){
         private val binding = ItemMemoryBinding.bind(itemView)
 
         fun bind(memory: MemoryDto) {
-            val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            binding.tvTitle.text = memory.city + memory.memoryDate
+
+            val text: String = " em "
+
+            val image: Bitmap = base64toBitMap(memory.picture)
+
+            binding.ivPicture.setImageBitmap(image)
+            binding.tvTitle.text = memory.memoryDate + text + memory.city
             binding.tvDescription.text = memory.description
         }
     }
