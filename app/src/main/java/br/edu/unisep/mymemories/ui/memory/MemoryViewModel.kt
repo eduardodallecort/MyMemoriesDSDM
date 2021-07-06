@@ -10,14 +10,20 @@ import kotlinx.coroutines.launch
 
 class MemoryViewModel(private val repository: MemoryRepository) : ViewModel() {
 
+    private val mMemoriesResult: MutableLiveData<List<MemoryDto>> = MutableLiveData()
 
-    val memoriesResult: MutableLiveData<List<MemoryDto>> = MutableLiveData()
+    val memoriesResult: LiveData<List<MemoryDto>>
+        get() = mMemoriesResult
 
-    fun getMemories() {
-        viewModelScope.launch {
-            val result = repository.getList()
-            memoriesResult.postValue(result)
-        }
+    private val mMemoriesError: MutableLiveData<Unit> = MutableLiveData()
+    val memoriesError: LiveData<Unit>
+        get() = mMemoriesError
+
+    fun listMemories() {
+        repository.findAll(
+            { result -> mMemoriesResult.postValue(result) },
+            { mMemoriesError.postValue(Unit) }
+        )
     }
 
 }
