@@ -15,4 +15,6 @@
 
     <string name="localization">Localização:</string>
     <string name="addText">Add text</string>
+
+    <string name="title_activity_maps">Map</string>
 </resources>

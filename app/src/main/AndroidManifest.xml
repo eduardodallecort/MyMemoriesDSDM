@@ -39,7 +39,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.newlocalization.NewLocalizationActivity"></activity>
+        <activity android:name=".ui.newlocalization.NewLocalizationActivity"
+            android:label="@string/title_activity_maps"></activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

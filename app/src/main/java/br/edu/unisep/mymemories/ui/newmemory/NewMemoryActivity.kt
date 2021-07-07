@@ -15,6 +15,7 @@ import br.edu.unisep.mymemories.MainActivity
 import br.edu.unisep.mymemories.R
 import br.edu.unisep.mymemories.data.Image
 import br.edu.unisep.mymemories.databinding.ActivityNewMemoryBinding
+import br.edu.unisep.mymemories.ui.newlocalization.NewLocalizationActivity
 import br.edu.unisep.mymemories.utils.bitmapToBase64
 import br.edu.unisep.mymemories.utils.getUriForFile
 import com.google.android.material.snackbar.Snackbar
@@ -45,8 +46,8 @@ class NewMemoryActivity : AppCompatActivity() {
         binding.btnCam.setOnClickListener { takePicture() }
         binding.btnGallery.setOnClickListener { openImageGallery() }
 
-//        viewModel.onSaveError.observe(this) { onSaveError() }
-//        viewModel.onSaveSuccess.observe(this) { onSaveSuccess() }
+        binding.btnTakeLocalization.setOnClickListener { }
+
     }
 
     private fun takePicture(): String {
